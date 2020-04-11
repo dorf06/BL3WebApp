@@ -1,0 +1,98 @@
+@page 
+@model BL3WebApp.Pages.Items.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
+    <p>
+        Name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Element)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].WorldDrop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].DroppedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].QuestChallengeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Summary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].RedText)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Item) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Element)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorldDrop)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DroppedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestChallengeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RedText)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
