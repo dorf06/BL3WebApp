@@ -1,0 +1,42 @@
+@page 
+@model BL3WebApp.Pages.Items.QuickListModel
+
+@{
+    ViewData["Title"] = "Quick List";
+}
+
+<h1>Quick List</h1>
+
+<form>
+    <p>
+        Name: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item[0].Summary)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Item) {
+        <tr>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.ID">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
